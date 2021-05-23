@@ -12,7 +12,7 @@ namespace LinkGroup.DemoTests.Scenario
     [Binding]
     public class LinkGroupSteps : IDisposable
     {
-        private IWebDriver driver;
+        private ChromeDriver driver;
 
         public LinkGroupSteps()
         {
