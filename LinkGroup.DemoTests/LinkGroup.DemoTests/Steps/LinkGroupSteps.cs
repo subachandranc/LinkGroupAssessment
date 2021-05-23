@@ -12,7 +12,7 @@ namespace LinkGroup.DemoTests.Scenario
     [Binding]
     public class LinkGroupSteps : IDisposable
     {
-        private ChromeDriver driver;
+        private IWebDriver driver;
 
         public LinkGroupSteps()
         {
@@ -23,6 +23,7 @@ namespace LinkGroup.DemoTests.Scenario
         public void GivenIHaveOpenedTheHomePage()
         {
             driver.Navigate().GoToUrl("https://www.linkgroup.eu/");
+			#URL launch
             driver.Manage().Window.Maximize();
             Thread.Sleep(1500);
             Assert.IsFalse(driver.Title.ToLower().Contains("LinkGroup"));
@@ -32,6 +33,7 @@ namespace LinkGroup.DemoTests.Scenario
         public void GivenIHaveAgreedToTheCookiePolicy()
         {
             Thread.Sleep(500);
+			#Accepting the cookie
             driver.FindElementByXPath("//*[@class='cc-btn cc-dismiss']").Click();
 
         }
@@ -39,11 +41,13 @@ namespace LinkGroup.DemoTests.Scenario
         [When(@"I search for '(.*)'")]
         public void WhenISearchFor(string leeds0)
         {
+			#Search the string in search field
             driver.FindElementByXPath("//*[@class='nav-link dropdown-toggle']").Click();
             Thread.Sleep(1000);
             IWebElement search = driver.FindElementByName("searchTerm");
             search.SendKeys("Leed");
             Thread.Sleep(1000);
+			#click the search button
             driver.FindElementByXPath("/html/body/div[3]/div/header/div/div/div[2]/div/nav/div/ul/li[3]/div/form/button").Click();
             Thread.Sleep(2000);
         }
@@ -51,13 +55,15 @@ namespace LinkGroup.DemoTests.Scenario
         [Then(@"The search results are displayed")]
         public void ThenTheSearchResultsAreDisplayed()
         {
-            string result = driver.FindElementByXPath("//*[@id='SearchResults']/h3").Text;
+            #Finding result string
+			string result = driver.FindElementByXPath("//*[@id='SearchResults']/h3").Text;
             Assert.AreEqual(result, "You searched for:\r\n" + '"' + "Leed" + '"');
         }
 
         [When(@"I open the found solutions page")]
         public void WhenIOpenTheFoundSolutionsPage()
         {
+			#URL Launch
             driver.Navigate().GoToUrl("https://www.linkfundsolutions.co.uk/");
             driver.Manage().Window.Maximize();
             Thread.Sleep(1500);
@@ -67,6 +73,7 @@ namespace LinkGroup.DemoTests.Scenario
         [Then(@"I can select the (.*) Juristriction")]
         public void ThenICanSelectTheJuristriction(string locatio)
         {
+			#Get current Justriction URL 
             string Justriction = driver.CurrentWindowHandle;
             switch (locatio)
             {
