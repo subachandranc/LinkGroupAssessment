@@ -37,7 +37,7 @@ namespace LinkGroup.DemoTests.Scenario
         {
             Thread.Sleep(500);
             Homepage page = new Homepage(_driver);
-            page.NavigateToSearchField();
+            page.Titlename();
 
         }
 
