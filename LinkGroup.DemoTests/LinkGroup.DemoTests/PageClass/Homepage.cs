@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace LinkGroup.DemoTests.Page_class
 {
-    public class Homepage 
+    public class Homepage : Baseclass
     {
         IWebDriver driver;
 
