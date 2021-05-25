@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using LinkGroup.DemoTests.Base_class;
+using LinkGroup.DemoTests.Page_class;
+using LinkGroup.DemoTests.PageClass;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
@@ -16,87 +19,62 @@ namespace LinkGroup.DemoTests.Scenario
 
         public LinkGroupSteps()
         {
-            driver = new ChromeDriver();
+            _driver = ScenarioContext.Current.Get<IWebDriver>("currentDriver");
+            Homepage page = new Homepage(_driver);
         }
+
 
         [Given(@"I have opened the Home page")]
         public void GivenIHaveOpenedTheHomePage()
         {
-//URL Launch
-            driver.Navigate().GoToUrl("https://www.linkgroup.eu/");
-            driver.Manage().Window.Maximize();
-            Thread.Sleep(1500);
-            Assert.IsFalse(driver.Title.ToLower().Contains("LinkGroup"));
+            _driver.Navigate().GoToUrl("https://www.linkgroup.eu/");
+            Homepage page = new Homepage(_driver);
+            page.NavigateToSearchField();
         }
 
         [Given(@"I have agreed to the cookie policy")]
         public void GivenIHaveAgreedToTheCookiePolicy()
         {
             Thread.Sleep(500);
-            //Accepting the cookie
-            driver.FindElement(By.XPath("//*[@class='cc-btn cc-dismiss']")).Click();
+            Homepage page = new Homepage(_driver);
+            page.NavigateToSearchField();
 
         }
 
         [When(@"I search for '(.*)'")]
-        public void WhenISearchFor(string leeds0)
+        public void WhenISearchFor()
         {
-            //Search the string in search field
-            driver.FindElement(By.XPath("//*[@class='nav-link dropdown-toggle']")).Click();
-            Thread.Sleep(1000);
-            IWebElement search = driver.FindElement(By.Name("searchTerm"));
-            search.SendKeys("Leed");
-            Thread.Sleep(1000);
-            //click the search button
-            driver.FindElement(By.XPath("/html/body/div[3]/div/header/div/div/div[2]/div/nav/div/ul/li[3]/div/form/button")).Click();
-            Thread.Sleep(2000);
+            StringSearch search = new StringSearch(_driver);
+            search.NavigateToResult();
         }
 
         [Then(@"The search results are displayed")]
         public void ThenTheSearchResultsAreDisplayed()
         {
-            //Finding result string
-            string result = driver.FindElement(By.XPath("//*[@id='SearchResults']/h3")).Text;
-            Assert.AreEqual(result, "You searched for:\r\n" + '"' + "Leed" + '"');
+            Resultpage output = new Resultpage(_driver);
+            output.Searchtext();
         }
 
         [When(@"I open the found solutions page")]
         public void WhenIOpenTheFoundSolutionsPage()
         {
-            //URL Launch
-            driver.Navigate().GoToUrl("https://www.linkfundsolutions.co.uk/");
-            driver.Manage().Window.Maximize();
-            Thread.Sleep(1500);
-            driver.FindElement(By.XPath("//*[@class='cc-btn cc-dismiss']")).Click();
+            JustrictionHomepage Jud = new JustrictionHomepage(_driver);
+            Jud.CookieAccept();
         }
 
         [Then(@"I can select the (.*) Juristriction")]
         public void ThenICanSelectTheJuristriction(string locatio)
         {
-            //Get current Justriction URL
-            string Justriction = driver.CurrentWindowHandle.ToString();
-            switch (locatio)
-            {
-                case ("United Kingdom"):
-                    Console.WriteLine("United Kingdom = " + Justriction);
-                    Assert.AreEqual(Justriction, "CDwindow-C3B1E5A5DA2E19BA712A6207E38FA9E2");
-                    break;
-                case ("Switzerland"):
-                    Console.WriteLine("Switzerland = " + Justriction);
-                    Assert.AreEqual(Justriction, "CDwindow-07D301E4C91A86837BD5A8BDF9F3A7E6");
-                    break;
-                default:
-                    Console.WriteLine("open window = "+Justriction);
-                    break;
-            }
+           JusitrictionResult Jus = new JusitrictionResult(_driver);
+            Jus.Justrictionname(locatio);
         }
 
         public void Dispose()
         {
-            if (driver != null)
+            if (_driver != null)
             {
-                driver.Dispose();
-                driver = null;
+                _driver.Dispose();
+                _driver = null;
             }
         }
     }
