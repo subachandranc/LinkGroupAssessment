@@ -18,7 +18,7 @@ namespace LinkGroup.DemoTests.Page_class
         }
 
         [FindsBy(How=How.XPath, Using= "//*[@id='SearchResults']/h3")]
-        public IWebElement resultText { get; set; }
+        protected IWebElement resultText { get; set; }
 
         public void Searchtext()
         {

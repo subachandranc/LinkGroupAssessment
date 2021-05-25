@@ -16,13 +16,13 @@ namespace LinkGroup.DemoTests.Page_class
             PageFactory.InitElements(driver, this);
         }
         [FindsBy(How = How.XPath, Using = "//*[@class='nav-link dropdown-toggle")]
-        public IWebElement Searchfield { get; set; }
+        protected IWebElement Searchfield { get; set; }
 
         [FindsBy(How = How.Name, Using = "searchTerm")]
-        public IWebElement Search { get; set; }
+        protected IWebElement Search { get; set; }
 
         [FindsBy(How=How.XPath, Using= "/html/body/div[3]/div/header/div/div/div[2]/div/nav/div/ul/li[3]/div/form/button")]
-        public IWebElement SearchButton { get; set; }
+        protected IWebElement SearchButton { get; set; }
 
         public Resultpage NavigateToResult()
         {

@@ -20,7 +20,7 @@ namespace LinkGroup.DemoTests.Page_class
 
 
         [FindsBy(How = How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
-        public IWebElement Acceptcookie { get; set; }
+        protected IWebElement Acceptcookie { get; set; }
 
         public StringSearch CookieAccept()
         {
