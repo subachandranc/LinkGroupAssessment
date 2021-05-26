@@ -8,10 +8,4 @@ Scenario: Search the given text in Home page
 	When I search for 'Leeds'
 	Then The search results are displayed
 
-	Scenario Outline: Juristrictions
-	When I open the found solutions page
-	Then I can select the <Jurisrction name> Juristriction
-	Examples: 
-	| Juristriction name |
-	| United Kingdom     |
-	| Switzerland       |
+	      |

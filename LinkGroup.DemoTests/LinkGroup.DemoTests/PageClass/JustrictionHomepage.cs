@@ -1,26 +1,19 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 
-namespace LinkGroup.DemoTests.Page_class
+namespace LinkGroup.DemoTests
 {
-    public class JustrictionHomepage
+    public class JustrictionHomepage : Baseclass
     {
-        IWebDriver driver;
-
         public JustrictionHomepage(IWebDriver _driver)
         {
-            this.driver = driver;
+            this.driver = _driver;
             PageFactory.InitElements(driver, this);
         }
 
 
         [FindsBy(How = How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
-        protected IWebElement Acceptcookie { get; set; }
+        public IWebElement Acceptcookie { get; set; }
 
         public StringSearch CookieAccept()
         {

@@ -1,17 +1,13 @@
-﻿using LinkGroup.DemoTests.Base_class;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System;
 using System.Threading;
 
-namespace LinkGroup.DemoTests.Page_class
+namespace LinkGroup.DemoTests
 {
     public class Homepage : Baseclass
     {
-        IWebDriver driver;
-
-        public Homepage(IWebDriver _driver)
+        public  Homepage(IWebDriver _driver)
         {
             this.driver = _driver;
             PageFactory.InitElements(driver, this);
@@ -21,9 +17,14 @@ namespace LinkGroup.DemoTests.Page_class
         [FindsBy(How=How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
         protected IWebElement Acceptcookie { get; set; }
 
+        public void UrlLaunch()
+        {
+            GotoUrl(driver, "https://www.linkgroup.eu/");
+            Sleep(1000);
+        }
+        
         public void Titlename()
-        { 
-            Thread.Sleep(1000);
+        {            
             string ActualTitle = driver.Title;
             string ExpectedTitle = "LinkGroup";
             Assert.IsTrue(ActualTitle.Equals(ExpectedTitle));
@@ -31,8 +32,8 @@ namespace LinkGroup.DemoTests.Page_class
 
         public StringSearch NavigateToSearchField()
         {
-            Acceptcookie.Click();
-            Thread.Sleep(1000)
+            ClickAnElement(driver, Acceptcookie);
+            Thread.Sleep(1000);
             return new StringSearch(driver);
         }
     }

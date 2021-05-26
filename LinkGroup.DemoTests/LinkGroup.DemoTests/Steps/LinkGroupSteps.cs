@@ -1,80 +1,52 @@
-﻿using LinkGroup.DemoTests.Base_class;
-using LinkGroup.DemoTests.Page_class;
-using LinkGroup.DemoTests.PageClass;
-using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
-using System;
-using System.Threading;
+﻿using System;
 using TechTalk.SpecFlow;
 
-namespace LinkGroup.DemoTests.Scenario
+namespace LinkGroup.DemoTests
 {
+
     [Binding]
-    public class LinkGroupSteps : IDisposable
+    public class LinkGroupSteps : Baseclass, IDisposable 
     {
-        private IWebDriver driver;
-
-        public LinkGroupSteps()
-        {
-            _driver = ScenarioContext.Current.Get<IWebDriver>("currentDriver");
-            Homepage page = new Homepage(_driver);
-        }
-
+        
 
         [Given(@"I have opened the Home page")]
         public void GivenIHaveOpenedTheHomePage()
         {
-            _driver.Navigate().GoToUrl("https://www.linkgroup.eu/");
-            Homepage page = new Homepage(_driver);
-            page.NavigateToSearchField();
+            Homepage page = new Homepage(driver);
+            page.UrlLaunch();
+            Sleep(1000);
+            page.Titlename();
         }
 
         [Given(@"I have agreed to the cookie policy")]
         public void GivenIHaveAgreedToTheCookiePolicy()
         {
-            Thread.Sleep(500);
-            Homepage page = new Homepage(_driver);
-            page.Titlename();
+            Sleep(500);
+            Homepage page = new Homepage(driver);
+            page.NavigateToSearchField();
 
         }
 
         [When(@"I search for '(.*)'")]
-        public void WhenISearchFor()
+        public void WhenISearchFor(string leeds0)
         {
-            StringSearch search = new StringSearch(_driver);
+            StringSearch search = new StringSearch(driver);
             search.NavigateToResult();
         }
 
         [Then(@"The search results are displayed")]
         public void ThenTheSearchResultsAreDisplayed()
         {
-            Resultpage output = new Resultpage(_driver);
+            Resultpage output = new Resultpage(driver);
             output.Searchtext();
-        }
-
-        [When(@"I open the found solutions page")]
-        public void WhenIOpenTheFoundSolutionsPage()
-        {
-            JustrictionHomepage Jud = new JustrictionHomepage(_driver);
-            Jud.CookieAccept();
-        }
-
-        [Then(@"I can select the (.*) Juristriction")]
-        public void ThenICanSelectTheJuristriction(string locatio)
-        {
-           JusitrictionResult Jus = new JusitrictionResult(_driver);
-            Jus.Justrictionname(locatio);
         }
 
         public void Dispose()
         {
-            if (_driver != null)
+            if (driver != null)
             {
-                _driver.Dispose();
-                _driver = null;
+                driver.Dispose();
+                driver = null;
             }
         }
     }

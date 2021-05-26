@@ -2,18 +2,14 @@
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace LinkGroup.DemoTests.PageClass
+namespace LinkGroup.DemoTests
 {
-    public class JusitrictionResult
+    public class JusitrictionResult : Baseclass
     {
-        IWebDriver driver;
-
         public JusitrictionResult(IWebDriver _driver)
         {
-            this.driver = driver;
+            this.driver = _driver;
             PageFactory.InitElements(driver, this);
         }
 

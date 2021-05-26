@@ -20,22 +20,22 @@ namespace LinkGroup.DemoTests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.8.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("LinkGroup")]
-    public partial class LinkGroupFeature
+    [NUnit.Framework.DescriptionAttribute("Jusitriction")]
+    public partial class JusitrictionFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "LinkGroup.feature"
+#line 1 "Jusitriction.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "LinkGroup", "\tSearch the text in Home page", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Jusitriction", "\tSearch the text in Home page", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,14 +74,22 @@ namespace LinkGroup.DemoTests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Search the given text in Home page")]
-        [NUnit.Framework.CategoryAttribute("Scenario")]
-        public virtual void SearchTheGivenTextInHomePage()
+        [NUnit.Framework.DescriptionAttribute("Juristrictions")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        [NUnit.Framework.TestCaseAttribute("United Kingdom", null)]
+        [NUnit.Framework.TestCaseAttribute("Switzerland", null)]
+        public virtual void Juristrictions(string juristrictionName, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
-                    "Scenario"};
+            string[] @__tags = new string[] {
+                    "mytag"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search the given text in Home page", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("Juristriction name", juristrictionName);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Juristrictions", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -103,17 +111,10 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 6
- testRunner.Given("I have opened the Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.When("I open the found solutions page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.And("I have agreed to the cookie policy", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 8
- testRunner.When("I search for \'Leeds\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[0]);
-#line 9
- testRunner.Then("The search results are displayed", ((string)(null)), table1, "Then ");
+ testRunner.Then("I can select the <Jurisrction name> Juristriction", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
