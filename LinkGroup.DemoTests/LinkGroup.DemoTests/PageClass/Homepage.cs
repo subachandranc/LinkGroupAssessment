@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
 using System.Threading;
 
 namespace LinkGroup.DemoTests.Page_class
@@ -12,7 +13,7 @@ namespace LinkGroup.DemoTests.Page_class
 
         public Homepage(IWebDriver _driver)
         {
-            this.driver = driver;
+            this.driver = _driver;
             PageFactory.InitElements(driver, this);
         }
 
@@ -31,6 +32,7 @@ namespace LinkGroup.DemoTests.Page_class
         public StringSearch NavigateToSearchField()
         {
             Acceptcookie.Click();
+            Thread.Sleep(1000)
             return new StringSearch(driver);
         }
     }

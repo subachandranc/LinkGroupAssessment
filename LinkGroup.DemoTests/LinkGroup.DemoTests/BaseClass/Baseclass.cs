@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using TechTalk.SpecFlow;
 
 namespace LinkGroup.DemoTests.Base_class
 {
@@ -12,15 +13,15 @@ namespace LinkGroup.DemoTests.Base_class
     {
         public IWebDriver driver;
 
-        [SetUp]
-        public  void Browserlaunch()
+        [BeforeScenario]
+        public void Browserlaunch()
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             Thread.Sleep(1500);
         }
 
-        [TearDown]
+        [AfterScenario]
         public void close()
         {
             driver.Close();

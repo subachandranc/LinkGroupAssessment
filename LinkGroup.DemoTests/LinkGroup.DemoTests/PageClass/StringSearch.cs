@@ -3,16 +3,17 @@ using SeleniumExtras.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace LinkGroup.DemoTests.Page_class
 {
-    public class StringSearch
+    public class StringSearch : Homepage
     {
         IWebDriver driver;
 
-        public StringSearch(IWebDriver _driver)
+        public StringSearch(IWebDriver _driver) : base(_driver)
         {
-            this.driver = driver;
+            this.driver = _driver;
             PageFactory.InitElements(driver, this);
         }
         [FindsBy(How = How.XPath, Using = "//*[@class='nav-link dropdown-toggle")]
@@ -26,7 +27,9 @@ namespace LinkGroup.DemoTests.Page_class
 
         public Resultpage NavigateToResult()
         {
+            Thread.Sleep(1500);
             Searchfield.Click();
+            Thread.Sleep(1500);
             Search.SendKeys("Leed");
             SearchButton.Click();
             return new Resultpage(driver);
