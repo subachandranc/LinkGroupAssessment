@@ -23,25 +23,25 @@ namespace LinkGroup.DemoTests
             driver.Close();
         }
 
-        public IWebDriver ClickAnElement(this IWebDriver driver, IWebElement element)
+        public static IWebDriver ClickAnElement( IWebDriver driver, IWebElement element)
         {
             element.Click();
             return driver;
         }
 
-        public IWebDriver SendKeys(this IWebDriver driver, IWebElement element, string text)
+        public static IWebDriver SendKeys( IWebDriver driver, IWebElement element, string text)
         {
             element.SendKeys(text);
             Sleep(200);
             return driver;
         }
 
-        public void Sleep(int min)
+        public static void Sleep(int min)
         {
             Thread.Sleep(min);
         }
 
-        public IWebDriver GotoUrl(this IWebDriver driver, string url)
+        public IWebDriver GotoUrl( IWebDriver driver, string url)
         {
             driver.Navigate().GoToUrl(url);
             Sleep(1500);
