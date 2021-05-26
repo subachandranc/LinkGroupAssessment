@@ -14,6 +14,7 @@ namespace LinkGroup.DemoTests
         public void WhenIOpenTheFoundSolutionsPage()
         {
             JustrictionHomepage Jud = new JustrictionHomepage(driver);
+            Jud.UrlLaunch();
             Jud.CookieAccept();
         }
 

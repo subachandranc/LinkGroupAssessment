@@ -15,10 +15,16 @@ namespace LinkGroup.DemoTests
         [FindsBy(How = How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
         public IWebElement Acceptcookie { get; set; }
 
+        public void UrlLaunch()
+        {
+            GotoUrl(driver, "https://www.linkfundsolutions.co.uk/");
+            Sleep(1000);
+        }
+
         public StringSearch CookieAccept()
         {
-            driver.Navigate().GoToUrl("https://www.linkfundsolutions.co.uk/");
-            Acceptcookie.Click();
+            ClickAnElement(driver, Acceptcookie);
+            Sleep(1000);
             return new StringSearch(driver);
         }
     }

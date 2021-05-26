@@ -7,14 +7,14 @@ namespace LinkGroup.DemoTests
 {
     public class Homepage : Baseclass
     {
-        public  Homepage(IWebDriver _driver)
+        public Homepage(IWebDriver _driver)
         {
             this.driver = _driver;
             PageFactory.InitElements(driver, this);
         }
 
-        
-        [FindsBy(How=How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
+
+        [FindsBy(How = How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
         protected IWebElement Acceptcookie { get; set; }
 
         public void UrlLaunch()
@@ -22,9 +22,9 @@ namespace LinkGroup.DemoTests
             GotoUrl(driver, "https://www.linkgroup.eu/");
             Sleep(1000);
         }
-        
+
         public void Titlename()
-        {            
+        {
             string ActualTitle = driver.Title;
             string ExpectedTitle = "LinkGroup";
             Assert.IsTrue(ActualTitle.Equals(ExpectedTitle));
@@ -33,7 +33,7 @@ namespace LinkGroup.DemoTests
         public StringSearch NavigateToSearchField()
         {
             ClickAnElement(driver, Acceptcookie);
-            Thread.Sleep(1000);
+            Sleep(1000);
             return new StringSearch(driver);
         }
     }
