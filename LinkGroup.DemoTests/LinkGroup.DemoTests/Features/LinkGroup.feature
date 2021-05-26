@@ -7,5 +7,3 @@ Scenario: Search the given text in Home page
 	And I have agreed to the cookie policy
 	When I search for 'Leeds'
 	Then The search results are displayed
-
-	      |
