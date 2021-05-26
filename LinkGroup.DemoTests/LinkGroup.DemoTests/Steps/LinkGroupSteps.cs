@@ -7,7 +7,7 @@ namespace LinkGroup.DemoTests
     [Binding]
     public class LinkGroupSteps : Baseclass, IDisposable 
     {
-        
+        IWebDriver driver;        
 
         [Given(@"I have opened the Home page")]
         public void GivenIHaveOpenedTheHomePage()

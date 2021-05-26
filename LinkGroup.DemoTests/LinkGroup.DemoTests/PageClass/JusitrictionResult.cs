@@ -7,6 +7,8 @@ namespace LinkGroup.DemoTests
 {
     public class JusitrictionResult : Baseclass
     {
+		 IWebDriver driver;
+		 
         public JusitrictionResult(IWebDriver _driver)
         {
             this.driver = _driver;

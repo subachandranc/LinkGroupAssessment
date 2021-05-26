@@ -8,6 +8,7 @@ namespace LinkGroup.DemoTests
     [Binding]
     public class JustrictionSteps : Baseclass, IDisposable
     {
+		 IWebDriver driver;
 
 
         [When(@"I open the found solutions page")]

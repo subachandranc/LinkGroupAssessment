@@ -5,6 +5,8 @@ namespace LinkGroup.DemoTests
 {
     public class StringSearch : Homepage
     {
+		 IWebDriver driver;
+		 
         public StringSearch(IWebDriver _driver) : base(_driver)
         {
             this.driver = _driver;

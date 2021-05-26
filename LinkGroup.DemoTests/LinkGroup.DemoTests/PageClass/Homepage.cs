@@ -7,6 +7,8 @@ namespace LinkGroup.DemoTests
 {
     public class Homepage : Baseclass
     {
+		 IWebDriver driver;
+		 
         public Homepage(IWebDriver _driver)
         {
             this.driver = _driver;
@@ -15,7 +17,7 @@ namespace LinkGroup.DemoTests
 
 
         [FindsBy(How = How.XPath, Using = "//*[@class='cc-btn cc-dismiss']")]
-        protected IWebElement Acceptcookie { get; set; }
+        public IWebElement Acceptcookie { get; set; }
 
         public void UrlLaunch()
         {
