@@ -1,13 +1,14 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
+using System;
 using System.Threading;
 
 namespace LinkGroup.DemoTests
 {
     public class Homepage : Baseclass
     {
-		 IWebDriver driver;
+		 
 		 
         public Homepage(IWebDriver _driver)
         {
@@ -29,7 +30,7 @@ namespace LinkGroup.DemoTests
         {
             string ActualTitle = driver.Title;
             string ExpectedTitle = "LinkGroup";
-            Assert.IsTrue(ActualTitle.Equals(ExpectedTitle));
+            Assert.IsFalse(driver.Title.ToLower().Contains("LinkGroup"));
         }
 
         public StringSearch NavigateToSearchField()

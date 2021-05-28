@@ -6,7 +6,7 @@ namespace LinkGroup.DemoTests
 {
     public class Resultpage : StringSearch
     {
-		 IWebDriver driver;
+		 
 		 
         public Resultpage(IWebDriver _driver) : base(_driver)
         {

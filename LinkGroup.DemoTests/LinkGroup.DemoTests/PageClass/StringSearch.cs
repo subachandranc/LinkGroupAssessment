@@ -5,14 +5,14 @@ namespace LinkGroup.DemoTests
 {
     public class StringSearch : Homepage
     {
-		 IWebDriver driver;
+		 
 		 
         public StringSearch(IWebDriver _driver) : base(_driver)
         {
             this.driver = _driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How = How.XPath, Using = "//*[@class='nav-link dropdown-toggle")]
+        [FindsBy(How = How.XPath, Using = "//*[@class='nav-link dropdown-toggle']")]
         protected IWebElement Searchfield { get; set; }
 
         [FindsBy(How = How.Name, Using = "searchTerm")]

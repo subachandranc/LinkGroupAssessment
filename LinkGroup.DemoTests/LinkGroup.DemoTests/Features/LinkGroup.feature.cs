@@ -111,9 +111,8 @@ this.ScenarioInitialize(scenarioInfo);
 #line 8
  testRunner.When("I search for \'Leeds\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[0]);
 #line 9
- testRunner.Then("The search results are displayed", ((string)(null)), table1, "Then ");
+ testRunner.Then("The search results are displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

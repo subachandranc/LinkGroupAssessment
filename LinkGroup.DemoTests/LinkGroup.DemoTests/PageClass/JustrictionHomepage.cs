@@ -5,7 +5,7 @@ namespace LinkGroup.DemoTests
 {
     public class JustrictionHomepage : Baseclass
     {
-		 IWebDriver driver;
+		 
 		 
         public JustrictionHomepage(IWebDriver _driver)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace LinkGroup.DemoTests
@@ -8,7 +9,7 @@ namespace LinkGroup.DemoTests
     [Binding]
     public class JustrictionSteps : Baseclass, IDisposable
     {
-		 IWebDriver driver;
+		 
 
 
         [When(@"I open the found solutions page")]

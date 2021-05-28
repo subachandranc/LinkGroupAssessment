@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 
 namespace LinkGroup.DemoTests
@@ -7,7 +8,7 @@ namespace LinkGroup.DemoTests
     [Binding]
     public class LinkGroupSteps : Baseclass, IDisposable 
     {
-        IWebDriver driver;        
+                
 
         [Given(@"I have opened the Home page")]
         public void GivenIHaveOpenedTheHomePage()
