@@ -29,7 +29,7 @@ namespace LinkGroup.DemoTests
         public void Titlename()
         {
             string ActualTitle = driver.Title;
-            Assert.IsFalse(driver.Title.ToLower().Contains("LinkGroup"));
+            Assert.IsFalse(driver.Title.ToLower().Contains("Home"));
         }
 
         public StringSearch NavigateToSearchField()
