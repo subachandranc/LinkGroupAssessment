@@ -29,7 +29,6 @@ namespace LinkGroup.DemoTests
         public void Titlename()
         {
             string ActualTitle = driver.Title;
-            string ExpectedTitle = "LinkGroup";
             Assert.IsFalse(driver.Title.ToLower().Contains("LinkGroup"));
         }
 
