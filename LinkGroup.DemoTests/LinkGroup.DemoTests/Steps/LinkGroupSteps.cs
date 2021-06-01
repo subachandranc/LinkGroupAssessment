@@ -15,14 +15,13 @@ namespace LinkGroup.DemoTests
         {
             Homepage page = new Homepage(driver);
             page.UrlLaunch();
-            Sleep(1000);
+            wait(driver, 1000);
             page.Titlename();
         }
 
         [Given(@"I have agreed to the cookie policy")]
         public void GivenIHaveAgreedToTheCookiePolicy()
         {
-            Sleep(500);
             Homepage page = new Homepage(driver);
             page.NavigateToSearchField();
 
@@ -31,11 +30,12 @@ namespace LinkGroup.DemoTests
         [When(@"I search for '(.*)'")]
         public void WhenISearchFor(string leeds0)
         {
-            StringSearch search = new StringSearch(driver);
-            search.NavigateToResult();
+            Homepage page = new Homepage(driver);
+            page.NavigateToResult();
         }
-
+        
         [Then(@"The search results are displayed")]
+        [Obsolete("The search results are displayed")]
         public void ThenTheSearchResultsAreDisplayed()
         {
             Resultpage output = new Resultpage(driver);

@@ -9,8 +9,6 @@ namespace LinkGroup.DemoTests
     [Binding]
     public class JustrictionSteps : Baseclass, IDisposable
     {
-		 
-
 
         [When(@"I open the found solutions page")]
         public void WhenIOpenTheFoundSolutionsPage()
@@ -23,8 +21,8 @@ namespace LinkGroup.DemoTests
         [Then(@"I can select the (.*) Juristriction")]
         public void ThenICanSelectTheJuristriction(string locatio)
         {
-            JusitrictionResult Jus = new JusitrictionResult(driver);
-            Jus.Justrictionname(locatio);
+            JustrictionHomepage Jud = new JustrictionHomepage(driver); 
+            Jud.Justrictionname(locatio);
         }
 
         public void Dispose()

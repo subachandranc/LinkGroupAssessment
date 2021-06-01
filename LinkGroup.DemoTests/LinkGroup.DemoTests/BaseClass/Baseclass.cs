@@ -1,5 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 
@@ -14,7 +16,7 @@ namespace LinkGroup.DemoTests
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            Sleep(1500);
+            wait(driver, 1000);
         }
 
         [AfterScenario]
@@ -32,19 +34,17 @@ namespace LinkGroup.DemoTests
         public static IWebDriver SendKeys( IWebDriver driver, IWebElement element, string text)
         {
             element.SendKeys(text);
-            Sleep(200);
             return driver;
         }
 
-        public static void Sleep(int min)
+        public static void wait(IWebDriver driver, int min)
         {
-            Thread.Sleep(min);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(min);
         }
 
         public IWebDriver GotoUrl( IWebDriver driver, string url)
         {
             driver.Navigate().GoToUrl(url);
-            Sleep(1500);
             return driver;
         }
     }
